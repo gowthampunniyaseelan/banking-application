@@ -5,7 +5,8 @@ while True:
   2.Deposite.
   3.Withdraw.
   4.Transfer.
-  5.exit
+  5.Transfer History Details.
+  6.Exit.
   """)
   number=int(input("Enter the above detail-> "))
   match number:
@@ -18,5 +19,7 @@ while True:
     case 4:
       Customer.transfer()
     case 5:
+      Customer.getTransactionalHistory()
+    case 6:
       break
 

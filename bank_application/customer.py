@@ -14,7 +14,7 @@ class Customer:
       pass
     with open(f"bank_application/{self.customerId}.txt","r+") as  new_file:
       history_id = 1
-      history_data = str(history_id) + "\t" + "opening" + "\t" + self.balance + "\t" + self.balance + "\n"
+      history_data = str(history_id) +" "+ "opening" + " " + self.balance + " " + self.balance + "\n"
       new_file.seek(0,2)
       new_file.write(history_data) 
   @classmethod
@@ -173,3 +173,30 @@ class Customer:
       data[3]=final_result+"\n"
       end=" ".join(data)
       transaction_history.write(end)
+  @classmethod
+  def getTransactionalHistory(cls):
+    customerId=input("Enter the customer ID: ")
+    password=input("Enter your password: ")
+    ascii_value = [ord(i) for i in password]
+    for j in range(len(ascii_value)):
+      if ascii_value[j] == 90:
+        ascii_value[j] = 64
+      if ascii_value[j] == 122:
+        ascii_value[j] = 96
+      if ascii_value[j] == 57:
+        ascii_value[j] = 47
+    new_value = [k+1 for k in ascii_value]
+    final_password=[chr(k) for k in new_value]
+    password="".join(final_password)
+    with open(filename,"r") as readingHistory:
+      data=readingHistory.readlines()
+      for i in range(len(data)):
+        result=data[i].split()
+        cId=result[0]
+        cPassword=result[4]
+        if cId == customerId and cPassword == password:
+          with open(f"bank_application/{customerId}.txt","r") as readthefile:
+            read=readthefile.readlines()
+            for i in range(len(read)):
+              print(read[i])
+
