@@ -19,7 +19,7 @@ class Customer:
       new_file.write(history_data) 
   @classmethod
   def getInputFromUser(cls):
-    with open("bank_application/bank_db.txt","r") as f:
+    with open(filename,"r") as f:
       data=f.readlines()
     for i in range(len(data)):
       result=data[i].split()
@@ -62,7 +62,7 @@ class Customer:
           dummy_result=" ".join(result)
           data[(int(cId)-1)]=dummy_result+"\n"
       original_result="".join(data)
-    with open("bank_application/bank_db.txt","w") as writefile:
+    with open(filename,"w") as writefile:
       writefile.write(original_result)
     with open(f"bank_application/{customerId}.txt","r+") as transaction_history:
       data=transaction_history.readlines()[-1]
@@ -81,7 +81,7 @@ class Customer:
     customerId=input("Enter the customer ID: ")
     accountId = input("Enter the account ID: ")
     amount=int(input("Enter the amount that you want to withdraw: "))
-    with open("bank_application/bank_db.txt","r+") as readfile:
+    with open(filename,"r+") as readfile:
       data=readfile.readlines()
       for i in range(len(data)):
         result=data[i].split()
@@ -96,7 +96,7 @@ class Customer:
             dummy_result=" ".join(result)
             data[(int(cId)-1)]=dummy_result+"\n"
             original_result="".join(data)
-            with open("bank_application/bank_db.txt","w") as writefile:
+            with open(filename,"w") as writefile:
               writefile.write(original_result)
             with open(f"bank_application/{customerId}.txt","r+") as transaction_history:
               data=transaction_history.readlines()[-1]
@@ -116,7 +116,7 @@ class Customer:
     customerId=input("Enter the customer ID: ")
     accountId = input("Enter the account ID: ")
     amount=int(input("Enter the amount that you want to withdraw: "))
-    with open("bank_application/bank_db.txt","r+") as readfile:
+    with open(filename,"r+") as readfile:
       data=readfile.readlines()
       for i in range(len(data)):
         first_result=data[i].split()
@@ -131,7 +131,7 @@ class Customer:
             dummy_result=" ".join(first_result)
             data[(int(cId)-1)]=dummy_result+"\n"
             original_result="".join(data)
-            with open("bank_application/bank_db.txt","w") as writefile:
+            with open(filename,"w") as writefile:
               writefile.write(original_result)
     with open(f"bank_application/{customerId}.txt","r+") as transaction_history:
       data=transaction_history.readlines()[-1]
@@ -148,7 +148,7 @@ class Customer:
     print("Enter another person details to transfer the money.")
     customerId=input("Enter the customer ID: ")
     accountId = input("Enter the account ID: ")
-    with open("bank_application/bank_db.txt","r+") as readfile:
+    with open(filename,"r+") as readfile:
       data=readfile.readlines()
       for i in range(len(data)):
         result=data[i].split()
@@ -159,7 +159,7 @@ class Customer:
           dummy_result=" ".join(result)
           data[(int(cId)-1)]=dummy_result+"\n"
       original_result="".join(data)
-    with open("bank_application/bank_db.txt","w") as writefile:
+    with open(filename,"w") as writefile:
       writefile.write(original_result)
     with open(f"bank_application/{customerId}.txt","r+") as transaction_history:
       data=transaction_history.readlines()[-1]
